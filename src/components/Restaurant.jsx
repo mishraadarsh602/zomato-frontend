@@ -13,13 +13,13 @@ let [rDetails, setRDetails] = useState(null);
 let [rMenuList, setRMenuList] = useState([]);
 let [totalPrice, setTotalPrice] = useState(0);
 let getRestaurantDetails = async () => {
-  let url = "http://localhost:5000/api/get-restaurant-detail/" + id;
+  let url = "https://zomato-haj8.onrender.com/api/get-restaurant-detail/" + id;
   let { data } = await axios.get(url);
   // console.log(data.result);
   setRDetails(data.result);
 };
 let getMenuItemList = async () => {
-  let url = "http://localhost:5000/api/get-menu-item-list/" + id;
+  let url = "https://zomato-haj8.onrender.com/api/get-menu-item-list/" + id;
   let { data } = await axios.get(url);
   setRMenuList(data.result);
 };
@@ -41,7 +41,7 @@ let decQty = (index) => {
 };
 
 const getPaymentView = async() => {
-  const  {data}=  await axios.post("http://localhost:5000/api/create-order", {
+  const  {data}=  await axios.post("https://zomato-haj8.onrender.com/api/create-order", {
     amount: totalPrice,
   }) 
  
@@ -59,7 +59,7 @@ var options = {
        order_id:response.razorpay_order_id,
        signature:response.razorpay_signature,
       }
-      const {data}  =await  axios.post("http://localhost:5000/api/verify-payment",sendData);
+      const {data}  =await  axios.post("https://zomato-haj8.onrender.com/api/verify-payment",sendData);
       // console.log(data);
     },
     "prefill": {

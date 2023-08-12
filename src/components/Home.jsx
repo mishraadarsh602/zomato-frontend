@@ -38,7 +38,7 @@ const Home = () => {
 }
    let getMealTypeList = async () => {
         try {
-            let url = "http://localhost:5000/api/get-meal-type-list";
+            let url = "https://zomato-haj8.onrender.com/api/get-meal-type-list";
             let response = await axios.get(url);
             let data = response.data;
             // console.log(data.result);
@@ -49,7 +49,7 @@ const Home = () => {
     }
     let getLocationList = async () => {
         try {
-            let url = "http://localhost:5000/api/get-location-list";
+            let url = "https://zomato-haj8.onrender.com/api/get-location-list";
             let response = await axios.get(url);
             let data = response.data;
             // console.log(data.result);
@@ -61,7 +61,7 @@ const Home = () => {
     }
     const getRestaurantListByLocId =async()=>{
        try{
-        let url = `http://localhost:5000/api/get-restaurant-list-by-loc-id/${selectLocation.location_id}`;
+        let url = `https://zomato-haj8.onrender.com/api/get-restaurant-list-by-loc-id/${selectLocation.location_id}`;
         let response = await axios.get(url);
         let data = response.data;
        setRestaurants(data.result);

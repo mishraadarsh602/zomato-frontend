@@ -59,7 +59,7 @@ const Header = () => {
             email: logInput.email,
             password: logInput.password
         }
-        const { data } = await axios.post("http://localhost:5000/api/login", sendData);
+        const { data } = await axios.post("https://zomato-haj8.onrender.com/api/login", sendData);
         console.log(data)
         if (data.call === true) {
             // alert("You have successfully logged in");
@@ -86,7 +86,7 @@ const Header = () => {
             address
         }
 
-        const { data } = await axios.post("http://localhost:5000/api/save-user-data", sendData);
+        const { data } = await axios.post("https://zomato-haj8.onrender.com/api/save-user-data", sendData);
         // console.log(data)
         if (data.call === true) {
             // alert("You have successfully registered");

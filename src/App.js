@@ -10,7 +10,7 @@ function App() {
   const [locationList,setLocationList] = useState([]);
 
     const getLocationList=async()=>{
-        const url = `http://localhost:5000/api/get-location-list`;
+        const url = `https://zomato-haj8.onrender.com/api/get-location-list`;
         const {data}  = await axios.get(url);
         // console.log(data.result);
         setLocationList(data.result);

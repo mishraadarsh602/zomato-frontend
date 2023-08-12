@@ -25,7 +25,7 @@ const Search = ({ locationList }) => {
 
     const getFilterData = async () => {
         //  setLocation(location_id);
-        const url = `http://localhost:5000/api/filters`;
+        const url = `https://zomato-haj8.onrender.com/api/filters`;
         const { data } = await axios.post(url, filter);
         // console.log(data.RestaurantList);
         setRestaurants(data.RestaurantList);
@@ -34,7 +34,7 @@ const Search = ({ locationList }) => {
     }
     const getCuisineList = async () => {
         //  setLocation(location_id);
-        const url = `http://localhost:5000/api/get-cuisine-list`;
+        const url = `https://zomato-haj8.onrender.com/api/get-cuisine-list`;
         const { data } = await axios.get(url);
         setCuisines(data.result);
 
