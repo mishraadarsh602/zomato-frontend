@@ -4,6 +4,9 @@
     margin-left:23px;
 
   }
+  #slideShow  .modal-dialog{
+    width: 30%;
+}
   .pagenotfound{
     width:50%!important;
    margin-top:7%;
@@ -24,29 +27,48 @@
 }
 }
 @media (max-width:991px){
+  #slideShow  .modal-dialog{
+    width: 50%;
+}
+  .no-merchant-img{
+    width:90%;
+  }
   .top-header .svg{
     top: 13px;
   }
-  .box .left {
-  
-    width: 94%;
+  .box .left { 
     margin: 0 auto;
     margin-bottom: 25px;
   }
+  .text-head {
+    font-size: 26px;
+}
   .restaurant-main-image {
     height: 54vh;
 }
 }
+@media only screen and (max-width:776px){
+  .box .left{
+    width: 94%;
+
+  }
+ 
+}
 @media (max-width:575px){
+ 
   .restaurant-main-image img{
-    height: 100%;
+    height:100%;
   }
   .restaurant-main-image{
-  height:28vh;
+  height:72vh;
   }
     .cus-w{
       width:90%!important;   
     }
+    #slideShow  .modal-dialog{
+      width: 70%;
+  margin: 0 auto;
+  }
     /* .logo{
       width: 100px;
       height: 100px;
@@ -67,7 +89,7 @@
       width:113px;
       overflow: hidden;
       border-radius: 20px;
-      
+      height:auto;
     }
     .food-img img{
       height: 81px;

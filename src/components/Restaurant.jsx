@@ -7,6 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import Header from "./Header";
 import { AiFillStar } from "react-icons/ai";
+import Footer from "./Footer";
 
 const Restaurant = () => { 
  let { id } = useParams();
@@ -403,6 +404,8 @@ return (
             </div>
           </div>
         </div>
+        <Footer></Footer>
+
       </>
     )}
   </>

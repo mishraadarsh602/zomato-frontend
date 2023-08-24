@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi"
 import { AiFillStar } from "react-icons/ai";
 import axios from "axios";
+import Footer from "./Footer";
 const Search = ({ locationList }) => {
     const { mealtype_id, meal_name } = useParams();
     const [restaurants, setRestaurants] = useState([]);
@@ -145,7 +146,7 @@ const Search = ({ locationList }) => {
                         Filters/Sort
                     </button>
                     <div className="row box">
-                        <div className="col-12 col-md-3 left ">
+                        <div className="col-12 col-md-4 col-lg-3 left ">
 
                             <article id="collapseFilter" className="collapse p-4 d-lg-block d-md-block">
                                 <div className="filter">
@@ -208,7 +209,7 @@ const Search = ({ locationList }) => {
                                 </div>
                             </article>
                         </div>
-                        <div className="col-12 col-md-9 right">
+                        <div className="col-12 col-md-8 col-lg-9 right">
                             <article>
 
                                 {restaurants.length > 0 ? restaurants.slice(page * 2 - 2, page * 2).map((rest, index) => (
@@ -243,7 +244,7 @@ const Search = ({ locationList }) => {
                                             </div>
                                         </div>
                                     </Link>
-                                )) : <div className="d-flex justify-content-center align-items-center"><img src="/images/no-merchant.png" /></div>}
+                                )) : <div className="d-flex justify-content-center align-items-center"><img className="no-merchant-img" src="/images/no-merchant.png" /></div>}
 
 
                                {restaurants.length>2 && <div className="pagging mt-4">
@@ -277,6 +278,8 @@ const Search = ({ locationList }) => {
                 </section>
             </main>
             <br /><br />
+            <Footer></Footer>
+
         </div>
     )
 }

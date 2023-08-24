@@ -3,40 +3,41 @@ import Header from "./Header";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 const Home = () => {
-  const navigate =  useNavigate();
-    let initData={
-        _id:"",
-        name:"",
-        city_id:0,
-        location_id:0,
-        city:"",
-        country_name:""
+    const navigate = useNavigate();
+    let initData = {
+        _id: "",
+        name: "",
+        city_id: 0,
+        location_id: 0,
+        city: "",
+        country_name: ""
     }
-    let restaurantinitData={
-        _id:"",
-        name:"",
-        city:0,
-        locality:0,
-       image:"",
+    let restaurantinitData = {
+        _id: "",
+        name: "",
+        city: 0,
+        locality: 0,
+        image: "",
     }
     const [meals, setMeals] = useState([]);
     const [locations, setLocations] = useState([]);
-   const [hideLocation,setHideLocation] = useState(true);
-  let [selectLocation,setSelectLocation] = useState({...initData});
-  const [restaurants, setRestaurants] = useState([]);
-  const [hideRestaurant,setHideRestaurant] = useState(true);
-  let [selectRestaurant,setSelectRestaurant] = useState({...restaurantinitData});
+    const [hideLocation, setHideLocation] = useState(true);
+    let [selectLocation, setSelectLocation] = useState({ ...initData });
+    const [restaurants, setRestaurants] = useState([]);
+    const [hideRestaurant, setHideRestaurant] = useState(true);
+    let [selectRestaurant, setSelectRestaurant] = useState({ ...restaurantinitData });
 
-   let setASelectedLocation = (index) => {
-       setHideLocation(true);
-       setSelectLocation(locations[index])
-   }
-   let setASelectedRestaurant = (index) => {
-    setHideRestaurant(true);
-    setSelectRestaurant(restaurants[index])
-}
-   let getMealTypeList = async () => {
+    let setASelectedLocation = (index) => {
+        setHideLocation(true);
+        setSelectLocation(locations[index])
+    }
+    let setASelectedRestaurant = (index) => {
+        setHideRestaurant(true);
+        setSelectRestaurant(restaurants[index])
+    }
+    let getMealTypeList = async () => {
         try {
             let url = "https://zomato-haj8.onrender.com/api/get-meal-type-list";
             let response = await axios.get(url);
@@ -59,32 +60,32 @@ const Home = () => {
             console.log(error);
         }
     }
-    const getRestaurantListByLocId =async()=>{
-       try{
-        let url = `https://zomato-haj8.onrender.com/api/get-restaurant-list-by-loc-id/${selectLocation.location_id}`;
-        let response = await axios.get(url);
-        let data = response.data;
-       setRestaurants(data.result);
-    //    console.log(restaurants);
-       }catch(error){
-        console.log(error);
-       }
+    const getRestaurantListByLocId = async () => {
+        try {
+            let url = `https://zomato-haj8.onrender.com/api/get-restaurant-list-by-loc-id/${selectLocation.location_id}`;
+            let response = await axios.get(url);
+            let data = response.data;
+            setRestaurants(data.result);
+            //    console.log(restaurants);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-   
+
     // call api on mounting
     useEffect(() => {
         getMealTypeList();
         getLocationList();
     }, [])
 
-    useEffect(()=>{
-     if(selectLocation.location_id!==0){
-        // console.log("select a location changes")
-        getRestaurantListByLocId();
-        setHideRestaurant(false);
-     }
-    },[selectLocation])
+    useEffect(() => {
+        if (selectLocation.location_id !== 0) {
+            // console.log("select a location changes")
+            getRestaurantListByLocId();
+            setHideRestaurant(false);
+        }
+    }, [selectLocation])
 
     return (
         <div>
@@ -120,12 +121,12 @@ const Home = () => {
                               
                             </select> */}
                                 <div className="position-relative">
-                                    <input className="form-control " readOnly onClick={()=>setHideLocation(false)} type="text" value={selectLocation.name===""?"Please select a location":selectLocation.name +","+selectLocation.city}  placeholder="Select a Location" />
+                                    <input className="form-control " readOnly onClick={() => setHideLocation(false)} type="text" value={selectLocation.name === "" ? "Please select a location" : selectLocation.name + "," + selectLocation.city} placeholder="Select a Location" />
 
-                                    {hideLocation ?null: <ul className="list-group position-absolute w-100">
+                                    {hideLocation ? null : <ul className="list-group position-absolute w-100">
                                         {
-                                            locations.map((location,index) => {
-                                                return (<li key={location._id} onClick={()=>setASelectedLocation(index)} className="list-group-item">{location.name}, {location.city}</li>
+                                            locations.map((location, index) => {
+                                                return (<li key={location._id} onClick={() => setASelectedLocation(index)} className="list-group-item">{location.name}, {location.city}</li>
                                                 )
                                             })
                                         }
@@ -144,12 +145,12 @@ const Home = () => {
 
                                 </span>
                                 <div className="position-relative">
-                                <input className="form-control ps-5 pt-2" readOnly onClick={()=>setHideRestaurant(false)} type="text"  value={selectRestaurant.name===""?"Search for restaurants": restaurants.length+" restaurants found"+selectRestaurant.name +","+selectRestaurant.city}   />
+                                    <input className="form-control ps-5 pt-2" readOnly onClick={() => setHideRestaurant(false)} type="text" value={selectRestaurant.name === "" ? "Search for restaurants" : restaurants.length + " restaurants found" + selectRestaurant.name + "," + selectRestaurant.city} />
 
-                                    {hideRestaurant ?null: <ul className="list-group position-absolute w-100">
+                                    {hideRestaurant ? null : <ul className="list-group position-absolute w-100">
                                         {
-                                            restaurants.map((restaurant,index) => {
-                                                return (<li key={restaurant._id} onClick={()=>navigate("/restaurant-details/"+restaurant._id)} className="list-group-item"><img className="rounded-circle me-3" style={{width:"60px",height: "60px"}} src={`/images/${restaurant.image}`}/>{restaurant.name}, {restaurant.city}</li>
+                                            restaurants.map((restaurant, index) => {
+                                                return (<li key={restaurant._id} onClick={() => navigate("/restaurant-details/" + restaurant._id)} className="list-group-item"><img className="rounded-circle me-3" style={{ width: "60px", height: "60px" }} src={`/images/${restaurant.image}`} />{restaurant.name}, {restaurant.city}</li>
                                                 )
                                             })
                                         }
@@ -183,10 +184,10 @@ const Home = () => {
                         <div className="row">
                             {/* <!--start of col--> */}
                             {
-                                meals.map((meal,index) => {
-                                    return (<div key={index}  onClick={() =>
+                                meals.map((meal, index) => {
+                                    return (<div key={index} onClick={() =>
                                         navigate(`/search/${meal.meal_type}/${meal.name}`)
-                                      } className="col-12 col-md-6 col-lg-6 col-xl-4 mt-4">
+                                    } className="col-12 col-md-6 col-lg-6 col-xl-4 mt-4">
                                         <div className="card mb-3  rounded-0 p-0 border-0 cus-card">
                                             <div className="row g-0">
                                                 <div className="col-5 col-md-5 col-sm-5">
@@ -207,15 +208,79 @@ const Home = () => {
                             }
                             {/* <!--end of col--> */}
 
-
-
-
-
-
                         </div>
                     </div>
                 </div>
             </main>
+            <div className="container mt-5">
+                <h1 className="text-edu font-bolder h4 mb-3">Frequently Asked Questions
+
+
+</h1>
+            <div className="accordion" id="accordionExample">
+                    <div className="accordion-item">
+                        <h2 className="accordion-header">
+                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            How do I Claim a Free Coupon?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div className="accordion-body">
+                            Coupons are free to claim, use the search or find somewhere close by using the Google Map View.
+
+Once you've found a great coupon offer, click the day you wish to use it, fill out your details to complete.
+
+You'll instantly receive your free coupon to your email inbox 
+
+To redeem - simply present coupon to staff when paying.                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            How do I Make a regular Table Booking?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div className="accordion-body">
+                            It's a piece of cake - once you've found your preferred restaurant simply select your Date and Time required, and then so long as we have an email address and phone number your booking is instantly confirmed the minute you hit "Book"
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            How can I be certain my booking's been received?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div className="accordion-body">
+                            We'll send an instant confirmation email to the address used in your booking. If you book more than a day ahead, we'll also send a reminder 24 hours before your booking is due. You can reconfirm your booking using a link in your reminder email.
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                            What happens if I don't reconfirm my booking?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div className="accordion-body">
+                            Don't worry, your restaurant will still hold your booking without a reconfirmation.
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <Footer></Footer>
         </div>
     )
 }
