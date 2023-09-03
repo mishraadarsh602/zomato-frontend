@@ -42,7 +42,6 @@ const Home = () => {
             let url = "https://zomato-haj8.onrender.com/api/get-meal-type-list";
             let response = await axios.get(url);
             let data = response.data;
-            // console.log(data.result);
             setMeals(data.result);
         } catch (error) {
             console.log(error);
@@ -53,7 +52,6 @@ const Home = () => {
             let url = "https://zomato-haj8.onrender.com/api/get-location-list";
             let response = await axios.get(url);
             let data = response.data;
-            // console.log(data.result);
             setLocations(data.result);
 
         } catch (error) {
@@ -66,7 +64,6 @@ const Home = () => {
             let response = await axios.get(url);
             let data = response.data;
             setRestaurants(data.result);
-            //    console.log(restaurants);
         } catch (error) {
             console.log(error);
         }
@@ -81,7 +78,6 @@ const Home = () => {
 
     useEffect(() => {
         if (selectLocation.location_id !== 0) {
-            // console.log("select a location changes")
             getRestaurantListByLocId();
             setHideRestaurant(false);
         }

@@ -359,7 +359,7 @@ return (
                 </div>
               </div>
               <div className="col-12">
-                <h3 className="mt-4"><span className=" mr-4">{rDetails.name} </span>             
+                <h3 className="mt-4"><span className="text-danger mr-4">{rDetails.name} </span>             
                     <span className="btn btn-sm btn-success ms-3">{rDetails.aggregate_rating} <AiFillStar />
                     </span>
                 </h3>
@@ -368,7 +368,7 @@ return (
                     <li>Overview & Contact</li>
                   </ul>
                   <a
-                    className="btn btn-primary align-self-start"
+                    className="btn btn-primary align-self-start rounded-0"
                     data-bs-toggle="modal"
                     href="#exampleModalToggle"
                     role="button"
@@ -380,7 +380,7 @@ return (
                 <hr className="mt-0" />
 
                 <div className="over-view">
-                  <p className="h5 mb-4">{rDetails.rating_text}</p>
+                  <p className="h6 mb-4" style={{color:"#858281"}}>{rDetails.rating_text}</p>
 
                   <p className="mb-0 fw-bold">Cuisine</p>
                   <p>

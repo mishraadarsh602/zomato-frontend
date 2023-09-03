@@ -34,7 +34,6 @@ const Header = () => {
         if (localStorage.getItem("user")) {
             const user = JSON.parse(localStorage.getItem("user"));
             setGetDetails(user);
-            // console.log("user local:",user.user.fullname)
 
         }
     }, [])
@@ -60,7 +59,6 @@ const Header = () => {
             password: logInput.password
         }
         const { data } = await axios.post("https://zomato-haj8.onrender.com/api/login", sendData);
-        console.log(data)
         if (data.call === true) {
             // alert("You have successfully logged in");
             loggedIn();
@@ -87,29 +85,15 @@ const Header = () => {
         }
 
         const { data } = await axios.post("https://zomato-haj8.onrender.com/api/save-user-data", sendData);
-        // console.log(data)
         if (data.call === true) {
             // alert("You have successfully registered");
             registered();
 
-            // // const  = new Modal()
-            // console.log(regRef.current);
-            // var myModal = regRef.current;
-            // // var bsModal = new window.bootstrap.Modal(myModal);
-            // var bsModal = new window.bootstrap.Modal(myModal);
-            // bsModal.show();
-            window.location.reload();
-            // if (isPending == "show") {
-            //     bsModal.show();
-            // }
-            // if (isPending == "hide") {
-            //     console.log("hide", bsModal);
-            // }
+            window.location.reload();          
 
         } else {
             // alert(data.message);
             setRegError(data.message)
-
 
         }
     }
@@ -125,7 +109,7 @@ const Header = () => {
             </span>
             {
                 getDetails === null ? <span className="">
-                    <span className="login text-light me-3" data-bs-target="#loginModal" data-bs-toggle="modal">Login</span>
+                    <span className="login text-light me-3 cursor-pointer" data-bs-target="#loginModal" data-bs-toggle="modal">Login</span>
                     <span className="create-acc btn btn-outline-light" data-bs-target="#registerModal" data-bs-toggle="modal" >Create an account</span>
                 </span> : <span className="head-right">
                     <span className="text-light me-3">{`Welcome ${getDetails.user.fullname.split(" ")[0]} !! `}</span>

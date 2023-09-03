@@ -1,12 +1,16 @@
 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 *{
     padding:0;
     margin:0;
-    font-family: 'Poppins', sans-serif!important;
+    /* font-family: 'Poppins', sans-serif!important; */
+    font-family: 'Montserrat', sans-serif!important;
 
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Playfair Display', serif!important;
 
 }
 p{
@@ -23,7 +27,13 @@ button{
 
 }
 
+.cursor-pointer{
+    cursor: pointer;
+}
+.cursor-pointer:hover{
+  color:rgb(84, 74, 74);
 
+}
 /* css for index page*/
 
 .filterbox{
@@ -34,10 +44,7 @@ button{
 .filterbox header{
   visibility: hidden;
 }
-h1{
-    font-weight:800!important;
 
-}
 .biglogo{
    
     width: 120px;
@@ -78,15 +85,7 @@ h1{
 
 /*  css for Filter page*/
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-
-*{
-  font-family: 'Poppins', sans-serif;
-  margin:0;
-  padding:0;
-}
 .fw-lighter{
   font-weight: lighter;
 }
@@ -437,6 +436,12 @@ width: 100%;
   width: 70px;
   height: 70px;
   font-size: 2em;
+}
+.text-dark-red{
+  color: #dc4157;
+}
+.bg-footer{
+  background-color:#efebf1;
 }
 /* iphone SE */
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
